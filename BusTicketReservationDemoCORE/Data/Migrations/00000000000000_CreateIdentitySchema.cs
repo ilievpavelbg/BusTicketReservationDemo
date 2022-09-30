@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace BusTicketReservationDemo.Data.Migrations
+namespace BusTicketReservationDemoCORE.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

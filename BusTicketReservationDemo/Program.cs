@@ -1,4 +1,4 @@
-using BusTicketReservationDemo.Data;
+using BusTicketReservationDemoCORE.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
