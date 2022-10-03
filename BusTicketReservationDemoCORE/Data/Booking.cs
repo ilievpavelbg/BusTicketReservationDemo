@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusTicketReservationDemoCORE.Data.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusTicketReservationDemoCORE.Models
 {
-    public partial class Booking
+    public class Booking
     {
-        public Booking()
-        {
-            Tickets = new HashSet<Ticket>();
-        }
+        [Key]
+        public Guid Id { get; set; }
 
-        public int Id { get; set; }
+        [Required]
         public DateTime DateOfBooking { get; set; }
-        public string BookingNumber { get; set; } = null!;
-        public string? Description { get; set; }
-        public int? CustomerId { get; set; }
 
-        public virtual Customer? Customer { get; set; }
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        [Required]
+        [StringLength(DataConstrains.BookingConstants.BookingNumberMaxLength)]
+        public string BookingNumber { get; set; } = null!;
+
+        [StringLength(DataConstrains.BookingConstants.DescriptionMaxLength)]
+        public string? Description { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(Customer))]
+        public int CustomerId { get; set; }
+        public virtual Customer Customer { get; set; } = null!;
+        public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
     }
 }

@@ -1,23 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusTicketReservationDemoCORE.Data;
+using BusTicketReservationDemoCORE.Data.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusTicketReservationDemoCORE.Models
 {
-    public partial class Customer
+    public class Customer
     {
-        public Customer()
-        {
-            Bookings = new HashSet<Booking>();
-        }
+        [Key]
+        public Guid Id { get; set; }
 
-        public int Id { get; set; }
+        [Required]
+        [StringLength(DataConstrains.CustomerConstants.FirstNameMaxLength)]
         public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
-        public string Phone { get; set; } = null!;
-        public string Email { get; set; } = null!;
-        public int Age { get; set; }
-        public string Address { get; set; } = null!;
 
-        public virtual ICollection<Booking> Bookings { get; set; }
+        [Required]
+        [StringLength(DataConstrains.CustomerConstants.LastNameMaxLength)]
+        public string LastName { get; set; } = null!;
+
+        [Required]
+        [StringLength(DataConstrains.CustomerConstants.PhoneMaxLength)]
+        public string Phone { get; set; } = null!;
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = null!;
+
+        [StringLength(DataConstrains.CustomerConstants.AgeMaxLength)]
+        public int? Age { get; set; }
+
+        public Gender? Gender { get; set; } = null!;
+
+        [StringLength(DataConstrains.CustomerConstants.TownMaxLength)]
+        public string? Town { get; set; } = null!;
+
+        [StringLength(DataConstrains.CustomerConstants.AddressMaxLength)]
+        public string? Address { get; set; } = null!;
+
+        public virtual ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
     }
 }

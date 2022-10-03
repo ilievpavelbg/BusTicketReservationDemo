@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusTicketReservationDemoCORE.Data.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusTicketReservationDemoCORE.Models
 {
-    public partial class Seat
+    public class Seat
     {
-        public Seat()
-        {
-            Buses = new HashSet<bus>();
-        }
-
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [Range(DataConstrains.SeatConstants.NumberMinLength, DataConstrains.SeatConstants.NumberMaxLength)]
         public int Number { get; set; }
+
         public bool IsBooked { get; set; }
 
-        public virtual ICollection<bus> Buses { get; set; }
+        public virtual ICollection<Bus> Buses { get; set; } = new HashSet<Bus>();   
     }
 }

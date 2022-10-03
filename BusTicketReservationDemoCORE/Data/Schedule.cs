@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusTicketReservationDemoCORE.Data.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace BusTicketReservationDemoCORE.Models
 {
-    public partial class Schedule
+    public class Schedule
     {
-        public Schedule()
-        {
-            Destinations = new HashSet<Destination>();
-        }
-
+        [Key]
         public int Id { get; set; }
-        public string StartDate { get; set; } = null!;
-        public string StartHour { get; set; } = null!;
-        public double Duration { get; set; }
 
-        public virtual ICollection<Destination> Destinations { get; set; }
+        [Required]
+        public DateTime StartDate { get; set; }
+
+        [Required]
+        public DateTime StartHour { get; set; }
+
+        [Required]
+        [Range(DataConstrains.ScheduleConstants.DurationMinLength, DataConstrains.ScheduleConstants.DuratonMaxLength)]
+        public int Duration { get; set; }
+
+        public virtual ICollection<Destination> Destinations { get; set; } = new HashSet<Destination>();    
     }
 }
