@@ -70,5 +70,13 @@
             public const int NumberMinLength = 1;
             public const int NumberMaxLength = 60;
         }
+
+        public static class TicketConstants
+        {
+            public const int AgeDiscountMinLength = 10;
+            public const int AgeDiscountMaxLength = 50;
+            public const int CommentMinLength = 10;
+            public const int CommentMaxLength = 1500;
+        }
     }
 }
