@@ -7,7 +7,7 @@ namespace BusTicketReservationDemoCORE.Models
     public class Booking
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public DateTime DateOfBooking { get; set; }

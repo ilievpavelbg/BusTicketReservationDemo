@@ -7,7 +7,7 @@ namespace BusTicketReservationDemoCORE.Models
     public class Customer
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(DataConstrains.CustomerConstants.FirstNameMaxLength)]

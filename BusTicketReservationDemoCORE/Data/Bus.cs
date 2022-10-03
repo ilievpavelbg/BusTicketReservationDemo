@@ -7,7 +7,7 @@ namespace BusTicketReservationDemoCORE.Models
     public class Bus
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(DataConstrains.BusConstants.ModelMaxLength)]
@@ -29,7 +29,7 @@ namespace BusTicketReservationDemoCORE.Models
 
         [Required]
         [ForeignKey(nameof(BusOwner))]
-        public string BusOwnerId { get; set; } = null!;
+        public int BusOwnerId { get; set; }
         public virtual BusOwner BusOwner { get; set; } = null!;
 
         public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();

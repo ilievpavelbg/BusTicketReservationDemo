@@ -6,7 +6,7 @@ namespace BusTicketReservationDemoCORE.Models
     public class BusOwner
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(DataConstrains.BusOwnerConstants.CompanyNameMaxLength)]

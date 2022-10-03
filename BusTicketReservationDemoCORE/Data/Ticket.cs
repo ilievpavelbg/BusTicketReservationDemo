@@ -7,7 +7,7 @@ namespace BusTicketReservationDemoCORE.Models
     public class Ticket
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Range(typeof(decimal), "0.01", "100")]
